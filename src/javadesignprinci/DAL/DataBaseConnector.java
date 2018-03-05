@@ -23,7 +23,7 @@ public class DataBaseConnector
      */
     public DataBaseConnector()
     {
-        ds.setDatabaseName("MyTunesMMEF");
+        ds.setDatabaseName("mikk6578_JavaDesignPrinci");
         ds.setUser("CS2017A_25_java");
         ds.setPassword("javajava");
         ds.setServerName("EASV-DB2");
