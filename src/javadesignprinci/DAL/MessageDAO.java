@@ -5,6 +5,12 @@
  */
 package javadesignprinci.DAL;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javadesignprinci.BE.Message;
 
 /**
@@ -14,9 +20,26 @@ import javadesignprinci.BE.Message;
 public class MessageDAO
 {
 
+    DataBaseConnector dbc = new DataBaseConnector();
+
     public Message logMessage(String text)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        try (Connection con = dbc.getConnection())
+        {
+
+            Statement stmt = con.createStatement();
+            String sql = "INSERT INTO Message (Text) VALUES (?)";
+            PreparedStatement st = con.prepareStatement(sql);     //, stmt.RETURN_GENERATED_KEYS 
+
+            st.setString(1, text.getText());
+
+            st.execute();
+
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(MessageDAO.class.getText()).log(Level.SEVERE, null, ex);
+        }
+        return Message;
     }
-    
 }

@@ -13,7 +13,7 @@ public class Message
 {
 
     private int Id;
-    private String msg;
+    private String Text;
 
     public int getId()
     {
@@ -25,14 +25,14 @@ public class Message
         this.Id = Id;
     }
 
-    public String getMsg()
+    public String getText()
     {
-        return msg;
+        return Text;
     }
 
-    public void setMsg(String msg)
+    public void setText(String Text)
     {
-        this.msg = msg;
+        this.Text = Text;
     }
 
 }
