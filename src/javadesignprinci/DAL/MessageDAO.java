@@ -5,11 +5,18 @@
  */
 package javadesignprinci.DAL;
 
+import javadesignprinci.BE.Message;
+
 /**
  *
  * @author Jens Karlskov
  */
 public class MessageDAO
 {
+
+    public Message logMessage(String text)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

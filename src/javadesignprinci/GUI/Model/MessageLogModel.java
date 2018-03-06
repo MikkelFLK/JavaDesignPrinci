@@ -17,7 +17,7 @@ public class MessageLogModel
 {
 
     private IMechaChatLogicFacade logicFacade;
-    private ObservableList <Message> msg;
+    private ObservableList <Message> msgLog;
 
     public void logMessage(String text)
     {

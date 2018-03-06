@@ -5,16 +5,23 @@
  */
 package javadesignprinci.BLL;
 
+import javadesignprinci.BE.Message;
+import javadesignprinci.DAL.MessageDAO;
+
 /**
  *
  * @author Jens Karlskov
  */
-public class MessageLogic
+public class MessageLogic implements IMechaChatLogicFacade
 {
-    private IMechaChatLogicFacade logicFacade;
     
-    public void logMessage(String text)
+    private MessageDAO msgDAO = new MessageDAO();
+    
+    @Override
+    public Message logMessage(String msg)
     {
-        logicFacade.logMessage(text);
+        return msgDAO.logMessage(msg);
+        
     }
+
 }
