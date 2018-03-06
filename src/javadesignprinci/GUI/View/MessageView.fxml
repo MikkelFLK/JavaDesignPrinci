@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javadesignprinci.GUI.Controller.MessageViewController">
-   <children>
-      <JFXTextArea fx:id="messageHistory" layoutY="14.0" prefHeight="355.0" prefWidth="735.0" />
-      <TextField fx:id="messageField" layoutX="14.0" layoutY="398.0" prefHeight="75.0" prefWidth="297.0" promptText="Your message here..." />
-      <JFXButton fx:id="btnSendMessage" buttonType="RAISED" layoutX="324.0" layoutY="414.0" onAction="#sendMessage" prefHeight="44.0" prefWidth="154.0" style="-fx-background-color: lightgray;" text="Send" />
-   </children>
-</AnchorPane>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javadesignprinci.GUI.Controller.MessageViewController">
+   <center>
+      <ListView fx:id="messageLog" prefHeight="385.0" prefWidth="735.0" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <HBox fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="messageField" prefHeight="44.0" prefWidth="297.0" promptText="Your message here..." HBox.hgrow="ALWAYS" />
+            <JFXButton fx:id="btnSendMessage" buttonType="RAISED" onAction="#sendMessage" prefHeight="44.0" prefWidth="154.0" style="-fx-background-color: lightgray;" text="Send" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
