@@ -5,8 +5,10 @@
  */
 package javadesignprinci.DAL;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -22,7 +24,7 @@ public class MessageDAO
 
     DataBaseConnector dbc = new DataBaseConnector();
 
-    public Message logMessage(String text)
+    public Message logMessage(String text) throws SQLException
     {
 
         try (Connection con = dbc.getConnection())
@@ -30,16 +32,19 @@ public class MessageDAO
 
             Statement stmt = con.createStatement();
             String sql = "INSERT INTO Message (Text) VALUES (?)";
-            PreparedStatement st = con.prepareStatement(sql);     //, stmt.RETURN_GENERATED_KEYS 
+            PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);     //, stmt.RETURN_GENERATED_KEYS 
 
-            st.setString(1, text.getText());
+            st.setString(1, text);
 
             st.execute();
+            ResultSet rs = st.getGeneratedKeys();
+            rs.next();
 
-        } catch (SQLException ex)
-        {
-            Logger.getLogger(MessageDAO.class.getText()).log(Level.SEVERE, null, ex);
+            Message m = new Message();
+            m.setId(rs.getInt("Id"));
+            m.setText(text);
+            return m;
+
         }
-        return Message;
     }
 }

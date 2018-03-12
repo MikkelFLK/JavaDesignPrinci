@@ -41,12 +41,11 @@ public class MessageViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        // TODO
+        messageLog.setItems(msgModel.getAllMessages());
+        msgModel.getAllMessages();
         
     }    
-
-    
-    
+        
     @FXML
     private void sendMessage(ActionEvent event)
     {

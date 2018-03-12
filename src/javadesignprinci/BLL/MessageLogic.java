@@ -5,6 +5,9 @@
  */
 package javadesignprinci.BLL;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javadesignprinci.BE.Message;
 import javadesignprinci.DAL.MessageDAO;
 
@@ -20,7 +23,14 @@ public class MessageLogic implements IMechaChatLogicFacade
     @Override
     public Message logMessage(String msg)
     {
-        return msgDAO.logMessage(msg);
+        try
+        {
+            return msgDAO.logMessage(msg);
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(MessageLogic.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
         
     }
 

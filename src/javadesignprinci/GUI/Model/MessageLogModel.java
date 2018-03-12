@@ -17,10 +17,16 @@ public class MessageLogModel
 {
 
     private IMechaChatLogicFacade logicFacade;
-    private ObservableList <Message> msgLog;
+    private ObservableList<Message> msgLog;
 
     public void logMessage(String text)
     {
-        logicFacade.logMessage(text);
+        Message m = logicFacade.logMessage(text);
+        msgLog.add(m);
+    }
+
+    public ObservableList<Message> getAllMessages()
+    {
+        return msgLog;
     }
 }
