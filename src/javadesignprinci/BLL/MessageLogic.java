@@ -12,16 +12,33 @@ import javadesignprinci.DAL.MessageDAO;
  *
  * @author Jens Karlskov
  */
-public class MessageLogic implements IMechaChatLogicFacade
+class MessageLogic implements IMechaChatLogicFacade
 {
-    
+
     private MessageDAO msgDAO = new MessageDAO();
-    
+
+    private static MessageLogic instance;
+
+    private MessageLogic()
+    {
+
+    }
+
+    public static synchronized MessageLogic getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new MessageLogic();
+        }
+
+        return instance;
+    }
+
     @Override
     public Message logMessage(String msg)
     {
         return msgDAO.logMessage(msg);
-        
+
     }
 
 }
