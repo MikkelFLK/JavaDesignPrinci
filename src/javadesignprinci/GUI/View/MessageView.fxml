@@ -2,21 +2,61 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javadesignprinci.GUI.Controller.MessageViewController">
+<BorderPane prefHeight="543.0" prefWidth="691.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javadesignprinci.GUI.Controller.MessageViewController">
    <center>
-      <ListView fx:id="messageLog" prefHeight="385.0" prefWidth="735.0" BorderPane.alignment="CENTER" />
+      <ListView fx:id="messageLog" prefHeight="385.0" prefWidth="573.0" style="-fx-border-color: grey;" BorderPane.alignment="CENTER" />
    </center>
-   <bottom>
-      <HBox fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
+   <top>
+      <AnchorPane prefHeight="40.0" prefWidth="1173.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="messageField" prefHeight="44.0" prefWidth="297.0" promptText="Your message here..." HBox.hgrow="ALWAYS" />
-            <JFXButton fx:id="btnSendMessage" buttonType="RAISED" onAction="#sendMessage" prefHeight="44.0" prefWidth="154.0" style="-fx-background-color: lightgray;" text="Send" />
+            <MenuBar layoutX="15.0" layoutY="-1.0" prefHeight="20.0" prefWidth="691.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Options">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" text="Undo  -   CTRL+Z" />
+                        <MenuItem mnemonicParsing="false" text="Redo   -   CTRL+Y" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
          </children>
-      </HBox>
+      </AnchorPane>
+   </top>
+   <left>
+      <AnchorPane prefHeight="385.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <AnchorPane prefHeight="385.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <right>
+            <AnchorPane prefHeight="200.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
+         </right>
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
+         </left>
+         <center>
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="183.0" prefWidth="579.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton fx:id="btnSendMessage" buttonType="RAISED" layoutY="136.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" onAction="#sendMessage" prefHeight="58.0" prefWidth="651.0" style="-fx-background-color: lightgray;" text="Send" />
+                  <TextField fx:id="messageField" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="140.0" prefWidth="651.0" promptText="Your message here..." style="-fx-border-color: grey;" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
    </bottom>
 </BorderPane>
