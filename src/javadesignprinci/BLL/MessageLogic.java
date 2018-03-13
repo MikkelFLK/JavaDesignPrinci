@@ -6,10 +6,13 @@
 package javadesignprinci.BLL;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javadesignprinci.BE.Message;
+import javadesignprinci.BLL.exceptions.BllException;
 import javadesignprinci.DAL.MessageDAO;
+import javadesignprinci.DAL.exceptions.DalException;
 
 /**
  *
@@ -19,7 +22,7 @@ class MessageLogic implements IMechaChatLogicFacade
 {
 
     private MessageDAO msgDAO = new MessageDAO();
-
+//    private IMechaChatDalFacade dalFacade;
     private static MessageLogic instance;
 
     private MessageLogic()
@@ -48,6 +51,24 @@ class MessageLogic implements IMechaChatLogicFacade
             Logger.getLogger(MessageLogic.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    @Override
+    public void deleteMessage(Message message) throws BllException
+    {
+        try
+        {
+            
+        }catch (DalException ex)
+        {
+
+        }
+    }
+
+    @Override
+    public List<Message> getAllMessages() throws BllException
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

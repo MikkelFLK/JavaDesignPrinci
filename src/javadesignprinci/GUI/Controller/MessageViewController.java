@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javadesignprinci.BE.Message;
+import javadesignprinci.BLL.exceptions.BllException;
 import javadesignprinci.GUI.Model.MessageLogModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,7 +48,7 @@ public class MessageViewController implements Initializable
     }    
         
     @FXML
-    private void sendMessage(ActionEvent event)
+    private void sendMessage(ActionEvent event) throws BllException
     {
         String text = messageField.getText();
         msgModel.logMessage(text);
