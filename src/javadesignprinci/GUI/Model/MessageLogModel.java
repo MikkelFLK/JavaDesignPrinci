@@ -5,10 +5,11 @@
  */
 package javadesignprinci.GUI.Model;
 
-import static com.sun.org.apache.xml.internal.serializer.utils.Utils.messages;
 import javadesignprinci.BE.Message;
 import javadesignprinci.BLL.IMechaChatLogicFacade;
 import javadesignprinci.BLL.exceptions.BllException;
+import javadesignprinci.BLL.MessageLogic;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -21,7 +22,13 @@ public class MessageLogModel
     private IMechaChatLogicFacade logicFacade;
     private ObservableList<Message> msgLog;
 
-    
+    public MessageLogModel()
+    {
+        logicFacade = new MessageLogic();
+        msgLog = FXCollections.observableArrayList();
+
+    }
+
     /**
      * Adds a new message to the log.
      *
@@ -41,12 +48,10 @@ public class MessageLogModel
         return msgLog;
     }
 
-    public void deleteMessage(Message message)
+    public void deleteMessage(Message message) throws BllException
     {
         logicFacade.deleteMessage(message);
-        messages.remove(message);
+        msgLog.remove(message);
     }
-    
-    
-    
+
 }

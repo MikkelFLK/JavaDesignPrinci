@@ -7,25 +7,24 @@ package javadesignprinci.BLL;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javadesignprinci.BE.Message;
 import javadesignprinci.BLL.exceptions.BllException;
 import javadesignprinci.DAL.MessageDAO;
 import javadesignprinci.DAL.exceptions.DalException;
+import javadesignprinci.DAL.facade.IMechaChatDalFacade;
 
 /**
  *
  * @author Jens Karlskov
  */
-class MessageLogic implements IMechaChatLogicFacade
+public class MessageLogic implements IMechaChatLogicFacade
 {
 
     private MessageDAO msgDAO = new MessageDAO();
-//    private IMechaChatDalFacade dalFacade;
+    private IMechaChatDalFacade dalFacade;
     private static MessageLogic instance;
 
-    private MessageLogic()
+    public MessageLogic()
     {
 
     }
@@ -41,16 +40,16 @@ class MessageLogic implements IMechaChatLogicFacade
     }
 
     @Override
-    public Message logMessage(String msg)
+    public Message logMessage(String msg) throws BllException
     {
+
         try
         {
             return msgDAO.logMessage(msg);
         } catch (SQLException ex)
         {
-            Logger.getLogger(MessageLogic.class.getName()).log(Level.SEVERE, null, ex);
+            throw new BllException(ex.getMessage(), ex);
         }
-        return null;
     }
 
     @Override
@@ -58,17 +57,23 @@ class MessageLogic implements IMechaChatLogicFacade
     {
         try
         {
-            
-        }catch (DalException ex)
+            dalFacade.deleteMessage(message);
+        } catch (DalException ex)
         {
-
+            throw new BllException(ex.getMessage(), ex);
         }
     }
 
     @Override
     public List<Message> getAllMessages() throws BllException
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try
+        {
+            return dalFacade.readAllMessages();
+        } catch (DalException ex)
+        {
+            throw new BllException(ex.getMessage(), ex);
+        }
     }
 
 }
