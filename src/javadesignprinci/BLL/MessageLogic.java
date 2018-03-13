@@ -15,14 +15,14 @@ import javadesignprinci.DAL.MessageDAO;
  *
  * @author Jens Karlskov
  */
-class MessageLogic implements IMechaChatLogicFacade
+public class MessageLogic implements IMechaChatLogicFacade
 {
 
     private MessageDAO msgDAO = new MessageDAO();
 
     private static MessageLogic instance;
 
-    private MessageLogic()
+    public MessageLogic()
     {
 
     }
@@ -38,16 +38,16 @@ class MessageLogic implements IMechaChatLogicFacade
     }
 
     @Override
-    public Message logMessage(String msg)
+    public Message logMessage(String msg) throws BllException
     {
+
         try
         {
             return msgDAO.logMessage(msg);
         } catch (SQLException ex)
         {
-            Logger.getLogger(MessageLogic.class.getName()).log(Level.SEVERE, null, ex);
+            throw new BllException(ex.getMessage(), ex);
         }
-        return null;
     }
 
 }

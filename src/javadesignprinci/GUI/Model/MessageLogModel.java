@@ -6,7 +6,10 @@
 package javadesignprinci.GUI.Model;
 
 import javadesignprinci.BE.Message;
+import javadesignprinci.BLL.BllException;
 import javadesignprinci.BLL.IMechaChatLogicFacade;
+import javadesignprinci.BLL.MessageLogic;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -19,7 +22,14 @@ public class MessageLogModel
     private IMechaChatLogicFacade logicFacade;
     private ObservableList<Message> msgLog;
 
-    public void logMessage(String text)
+    public MessageLogModel()
+    {
+        logicFacade = new MessageLogic();
+        msgLog = FXCollections.observableArrayList();
+        
+    }
+
+    public void logMessage(String text) throws BllException
     {
         Message m = logicFacade.logMessage(text);
         msgLog.add(m);

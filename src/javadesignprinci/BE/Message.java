@@ -35,4 +35,10 @@ public class Message
         this.Text = Text;
     }
 
+    @Override
+    public String toString()
+    {
+        return "Message{" + "Id=" + Id + ", Text=" + Text + '}';
+    }
+
 }

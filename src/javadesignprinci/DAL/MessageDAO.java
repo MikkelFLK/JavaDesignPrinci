@@ -41,7 +41,7 @@ public class MessageDAO
             rs.next();
 
             Message m = new Message();
-            m.setId(rs.getInt("Id"));
+            m.setId(rs.getInt(1));
             m.setText(text);
             return m;
 

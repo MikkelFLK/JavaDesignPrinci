@@ -10,7 +10,10 @@ import com.jfoenix.controls.JFXTextArea;
 import java.io.FileWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javadesignprinci.BE.Message;
+import javadesignprinci.BLL.BllException;
 import javadesignprinci.GUI.Model.MessageLogModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,7 +35,7 @@ public class MessageViewController implements Initializable
     private JFXButton btnSendMessage;
     @FXML
     private ListView<Message> messageLog;
-    
+
     private MessageLogModel msgModel = new MessageLogModel();
 
     /**
@@ -43,14 +46,27 @@ public class MessageViewController implements Initializable
     {
         messageLog.setItems(msgModel.getAllMessages());
         msgModel.getAllMessages();
-        
-    }    
-        
+
+    }
+
     @FXML
     private void sendMessage(ActionEvent event)
     {
         String text = messageField.getText();
-        msgModel.logMessage(text);
+        try
+        {
+            msgModel.logMessage(text);
+        } catch (BllException ex)
+        {
+            displayException(ex);
+        }
+        messageLog.setItems(msgModel.getAllMessages());
     }
-    
+
+    private void displayException(BllException ex)
+    {
+        System.out.println("I should display an error message wit the text: " + ex.getMessage());
+        ex.printStackTrace();
+    }
+
 }

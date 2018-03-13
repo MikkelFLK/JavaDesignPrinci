@@ -5,15 +5,14 @@
  */
 package javadesignprinci.BLL;
 
-import javadesignprinci.BE.Message;
-
 /**
  *
  * @author Mikkel
  */
-public interface IMechaChatLogicFacade
+public class BllException extends Exception
 {
-
-    public Message logMessage(String msg) throws BllException;
-
+        public BllException(String message, Throwable cause)
+    {
+        super(message, cause);
+    }
 }
