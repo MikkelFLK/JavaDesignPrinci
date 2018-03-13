@@ -6,8 +6,8 @@
 package javadesignprinci.GUI.Model;
 
 import javadesignprinci.BE.Message;
-import javadesignprinci.BLL.BllException;
 import javadesignprinci.BLL.IMechaChatLogicFacade;
+import javadesignprinci.BLL.exceptions.BllException;
 import javadesignprinci.BLL.MessageLogic;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,13 +27,20 @@ public class MessageLogModel
         logicFacade = new MessageLogic();
         msgLog = FXCollections.observableArrayList();
         msgLog.addAll(logicFacade.loadAllMessages());
-        
     }
 
-    public void logMessage(String text) throws BllException
+    /**
+     * Adds a new message to the log.
+     *
+     * @param text The text of the message.
+     * @return
+     * @throws BllException
+     */
+    public Message logMessage(String text) throws BllException
     {
         Message m = logicFacade.logMessage(text);
         msgLog.add(m);
+        return m;
     }
 
     public ObservableList<Message> getAllMessages()
@@ -41,8 +48,16 @@ public class MessageLogModel
         return msgLog;
     }
 
+
     public ObservableList<Message> loadAllMessages()
     {
         return msgLog;
     }
+
+    public void deleteMessage(Message message) throws BllException
+    {
+        logicFacade.deleteMessage(message);
+        msgLog.remove(message);
+    }
+
 }

@@ -49,7 +49,7 @@ public class Message
     @Override
     public String toString()
     {
-        return "Message{" + "Id=" + Id + ", Text=" + Text + '}';
+        return "#" + Id + " " + Text;
     }
 
 }

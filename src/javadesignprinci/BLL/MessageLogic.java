@@ -10,7 +10,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javadesignprinci.BE.Message;
+import javadesignprinci.BLL.exceptions.BllException;
 import javadesignprinci.DAL.MessageDAO;
+import javadesignprinci.DAL.exceptions.DalException;
+import javadesignprinci.DAL.facade.IMechaChatDalFacade;
 
 /**
  *
@@ -20,7 +23,7 @@ public class MessageLogic implements IMechaChatLogicFacade
 {
 
     private MessageDAO msgDAO = new MessageDAO();
-
+    private IMechaChatDalFacade dalFacade;
     private static MessageLogic instance;
 
     public MessageLogic()
@@ -58,6 +61,31 @@ public class MessageLogic implements IMechaChatLogicFacade
         {
             return msgDAO.readAllMessages();
         } catch (SQLException ex)
+        {
+            throw new BllException(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public void deleteMessage(Message message) throws BllException
+    {
+        try
+        {
+            dalFacade.deleteMessage(message);
+        } catch (DalException ex)
+        {
+            throw new BllException(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public List<Message> getAllMessages() throws BllException
+    {
+        try
+        {
+            return dalFacade.readAllMessages();
+        } catch (DalException ex)
+
         {
             throw new BllException(ex.getMessage(), ex);
         }
