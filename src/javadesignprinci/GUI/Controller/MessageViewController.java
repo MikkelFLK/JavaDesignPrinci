@@ -36,16 +36,22 @@ public class MessageViewController implements Initializable
     @FXML
     private ListView<Message> messageLog;
 
-    private MessageLogModel msgModel = new MessageLogModel();
+    private MessageLogModel msgModel;
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller class
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        messageLog.setItems(msgModel.getAllMessages());
-        msgModel.getAllMessages();
+        try
+        {
+            msgModel = new MessageLogModel();
+        } catch (BllException ex)
+        {
+            System.out.println("Error");
+        }
+        messageLog.setItems(msgModel.loadAllMessages());
 
     }
 

@@ -6,6 +6,7 @@
 package javadesignprinci.BLL;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javadesignprinci.BE.Message;
@@ -44,6 +45,18 @@ public class MessageLogic implements IMechaChatLogicFacade
         try
         {
             return msgDAO.logMessage(msg);
+        } catch (SQLException ex)
+        {
+            throw new BllException(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public List<Message> loadAllMessages() throws BllException
+    {
+        try
+        {
+            return msgDAO.readAllMessages();
         } catch (SQLException ex)
         {
             throw new BllException(ex.getMessage(), ex);

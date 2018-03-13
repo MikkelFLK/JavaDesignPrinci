@@ -22,10 +22,11 @@ public class MessageLogModel
     private IMechaChatLogicFacade logicFacade;
     private ObservableList<Message> msgLog;
 
-    public MessageLogModel()
+    public MessageLogModel() throws BllException
     {
         logicFacade = new MessageLogic();
         msgLog = FXCollections.observableArrayList();
+        msgLog.addAll(logicFacade.loadAllMessages());
         
     }
 
@@ -36,6 +37,11 @@ public class MessageLogModel
     }
 
     public ObservableList<Message> getAllMessages()
+    {
+        return msgLog;
+    }
+
+    public ObservableList<Message> loadAllMessages()
     {
         return msgLog;
     }
