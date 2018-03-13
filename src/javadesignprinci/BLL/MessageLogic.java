@@ -7,6 +7,8 @@ package javadesignprinci.BLL;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javadesignprinci.BE.Message;
 import javadesignprinci.BLL.exceptions.BllException;
 import javadesignprinci.DAL.MessageDAO;
@@ -53,6 +55,18 @@ public class MessageLogic implements IMechaChatLogicFacade
     }
 
     @Override
+    public List<Message> loadAllMessages() throws BllException
+    {
+        try
+        {
+            return msgDAO.readAllMessages();
+        } catch (SQLException ex)
+        {
+            throw new BllException(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
     public void deleteMessage(Message message) throws BllException
     {
         try
@@ -71,6 +85,7 @@ public class MessageLogic implements IMechaChatLogicFacade
         {
             return dalFacade.readAllMessages();
         } catch (DalException ex)
+
         {
             throw new BllException(ex.getMessage(), ex);
         }

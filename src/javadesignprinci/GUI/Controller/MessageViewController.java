@@ -16,13 +16,11 @@ import javadesignprinci.GUI.Model.MessageLogModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
-import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -31,34 +29,33 @@ import javafx.util.Callback;
  */
 public class MessageViewController implements Initializable
 {
-    
+
     @FXML
     private TextField messageField;
     @FXML
     private JFXButton btnSendMessage;
     @FXML
     private ListView<Message> messageLog;
-    
-    private MessageLogModel msgModel = new MessageLogModel();
-    
+
+    private MessageLogModel msgModel;
+
     private Stack<ICommand> undos;
     private Stack<ICommand> redos;
-    
+
     private KeyCombination keysUndo;
     private KeyCombination keysRedo;
-
     /**
-     * Initializes the controller class.
+     * Initializes the controller class
      */
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+
         keysRedo = new KeyCodeCombination(KeyCode.Y, KeyCodeCombination.CONTROL_DOWN);
         keysUndo = new KeyCodeCombination(KeyCode.Z, KeyCodeCombination.CONTROL_DOWN);
-        
-        messageLog.setItems(msgModel.getAllMessages());
-        msgModel.getAllMessages();
-        
+
+
+
 //        try
 //        {
 //            msgModel = new MessageLogModel();
@@ -95,9 +92,17 @@ public class MessageViewController implements Initializable
 //        {
 //            displayException(ex);
 //        }
-        
+        try
+        {
+            msgModel = new MessageLogModel();
+        } catch (BllException ex)
+        {
+            System.out.println("Error");
+        }
+        messageLog.setItems(msgModel.loadAllMessages());
+
     }
-    
+
     @FXML
     private void sendMessage(ActionEvent event) throws BllException
     {
@@ -111,16 +116,16 @@ public class MessageViewController implements Initializable
         }
         messageLog.setItems(msgModel.getAllMessages());
     }
-    
+
     private void displayException(BllException ex)
     {
         System.out.println("I should display an error message wit the text: " + ex.getMessage());
         ex.printStackTrace();
     }
-    
+
     private void initKeyHandling()
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

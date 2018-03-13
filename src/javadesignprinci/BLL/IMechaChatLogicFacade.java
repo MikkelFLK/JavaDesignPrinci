@@ -9,6 +9,7 @@ import java.util.List;
 import javadesignprinci.BE.Message;
 import javadesignprinci.BLL.exceptions.BllException;
 
+
 /**
  *
  * @author Mikkel
@@ -21,5 +22,7 @@ public interface IMechaChatLogicFacade
     public List<Message> getAllMessages() throws BllException;
 
     public Message logMessage(String msg) throws BllException;
+    
+    public List<Message> loadAllMessages() throws BllException; 
 
 }

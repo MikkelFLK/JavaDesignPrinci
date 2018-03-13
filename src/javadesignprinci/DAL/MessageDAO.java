@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javadesignprinci.BE.Message;
@@ -46,5 +48,28 @@ public class MessageDAO
             return m;
 
         }
+    }
+
+    public List<Message> readAllMessages() throws SQLException
+    {
+        try (Connection con = dbc.getConnection())
+        {
+            Statement stmt = con.createStatement();
+            String sql = "SELECT * FROM Message";
+            List<Message> messages = new ArrayList<>();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next())
+            {
+                messages.add(readMessageFromRow(rs));
+            }
+            return messages;
+        }
+    }
+
+    private Message readMessageFromRow(ResultSet rs) throws SQLException
+    {
+        int Id = rs.getInt("Id");
+        String Text = rs.getString("Text");
+        return new Message(Id, Text);
     }
 }

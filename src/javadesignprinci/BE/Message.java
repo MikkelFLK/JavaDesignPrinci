@@ -12,8 +12,19 @@ package javadesignprinci.BE;
 public class Message
 {
 
+    public Message(int Id, String Text)
+    {
+        this.Id = Id;
+        this.Text = Text;
+    }
+
     private int Id;
     private String Text;
+
+    public Message()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public int getId()
     {
@@ -38,7 +49,7 @@ public class Message
     @Override
     public String toString()
     {
-        return "Message{" + "Id=" + Id + ", Text=" + Text + '}';
+        return "#" + Id + " " + Text;
     }
 
 }
