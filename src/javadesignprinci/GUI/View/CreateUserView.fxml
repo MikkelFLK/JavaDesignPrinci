@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="406.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="javadesignprinci.GUI.View.CreateUserViewController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="406.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="javadesignprinci.GUI.Controller.CreateUserViewController">
    <children>
       <Label layoutX="135.0" layoutY="38.0" text="Create User">
          <font>
