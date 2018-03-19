@@ -46,6 +46,7 @@ public class CreateUserViewController implements Initializable
     @FXML
     private void createUserCancelButtonOnAction(ActionEvent event)
     {
+         System.exit(0);
     }
 
     @FXML

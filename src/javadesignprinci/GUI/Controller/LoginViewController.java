@@ -49,6 +49,7 @@ public class LoginViewController implements Initializable
     @FXML
     private void quitButtonOnAction(ActionEvent event)
     {
+         System.exit(0);
     }
 
     @FXML
