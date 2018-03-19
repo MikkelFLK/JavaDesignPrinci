@@ -21,7 +21,9 @@ public class JavaDesignPrinci extends Application
     @Override
     public void start(Stage stage) throws Exception
     {
-        Parent root = FXMLLoader.load(getClass().getResource("GUI/View/MessageView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("GUI/View/MessageView.fxml")); //  GUI/View/LoginView.fxml 
+                                                                                            //  GUI/View/CreateUserView.fxml      
+                                                                                            //  GUI/View/MessageView.fxml
         
         Scene scene = new Scene(root);
         
