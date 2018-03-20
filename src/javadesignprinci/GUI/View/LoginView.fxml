@@ -6,27 +6,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="394.0" prefWidth="416.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="javadesignprinci.GUI.Controller.LoginViewController">
+<AnchorPane id="AnchorPane" prefHeight="309.0" prefWidth="272.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javadesignprinci.GUI.Controller.LoginViewController">
    <children>
-      <Label layoutX="169.0" layoutY="34.0" prefHeight="40.0" prefWidth="79.0" text="Log In">
+      <Label layoutX="97.0" layoutY="26.0" prefHeight="40.0" prefWidth="79.0" text="Log In">
          <font>
-            <Font size="22.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="userNameField" layoutX="141.0" layoutY="108.0" promptText="Username" />
-      <JFXTextField fx:id="passwordField" layoutX="141.0" layoutY="169.0" promptText="Password" />
-      <JFXButton fx:id="createUserButton" layoutX="160.0" layoutY="210.0" onAction="#createUserButtonOnAction" style="-fx-background-color: lightgrey;" text="Create User">
+      <JFXTextField fx:id="userNameField" layoutX="69.0" layoutY="100.0" promptText="Username" />
+      <JFXTextField fx:id="passwordField" layoutX="69.0" layoutY="161.0" promptText="Password" />
+      <JFXButton fx:id="createUserButton" layoutX="88.0" layoutY="219.0" onAction="#createUserButtonOnAction" style="-fx-background-color: lightgrey;" text="Create User">
          <font>
             <Font size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="quitButton" layoutX="43.0" layoutY="286.0" onAction="#quitButtonOnAction" prefHeight="60.0" prefWidth="126.0" style="-fx-background-color: lightgrey;" text="QUIT">
+      <JFXButton fx:id="quitButton" layoutX="141.0" layoutY="269.0" onAction="#quitButtonOnAction" prefHeight="31.0" prefWidth="126.0" style="-fx-background-color: lightgrey;" text="Close">
          <font>
             <Font size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="logInButton" layoutX="248.0" layoutY="286.0" onAction="#logInButtonOnAction" prefHeight="60.0" prefWidth="126.0" style="-fx-background-color: lightgrey;" text="Log in">
+      <JFXButton fx:id="logInButton" layoutX="6.0" layoutY="269.0" onAction="#logInButtonOnAction" prefHeight="31.0" prefWidth="126.0" style="-fx-background-color: lightgrey;" text="Log in">
          <font>
             <Font size="15.0" />
          </font>
