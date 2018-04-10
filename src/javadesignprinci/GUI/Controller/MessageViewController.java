@@ -6,21 +6,30 @@
 package javadesignprinci.GUI.Controller;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Stack;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javadesignprinci.BE.Message;
 import javadesignprinci.BLL.exceptions.BllException;
 import javadesignprinci.GUI.Model.Command.ICommand;
 import javadesignprinci.GUI.Model.MessageLogModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -44,6 +53,8 @@ public class MessageViewController implements Initializable
 
     private KeyCombination keysUndo;
     private KeyCombination keysRedo;
+    @FXML
+    private MenuItem addCollaboratorButton;
     /**
      * Initializes the controller class
      */
@@ -128,4 +139,26 @@ public class MessageViewController implements Initializable
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-}
+    @FXML
+    private void OnActionAddCollaborator(ActionEvent event)
+    {
+        try
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/javadesignprinci/GUI/View/AddCollaborator.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            AddCollaboratorController ctrl = fxmlLoader.getController();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.setTitle("Add Collaborator");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        } catch (IOException ex)
+        {
+            Logger.getLogger(LoginViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+    }
+
+
+

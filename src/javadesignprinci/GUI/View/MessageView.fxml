@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="543.0" prefWidth="691.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javadesignprinci.GUI.Controller.MessageViewController">
+<BorderPane prefHeight="543.0" prefWidth="691.0" style="-fx-background-color: lightgrey;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javadesignprinci.GUI.Controller.MessageViewController">
    <center>
       <ListView fx:id="messageLog" prefHeight="385.0" prefWidth="573.0" style="-fx-border-color: grey;" BorderPane.alignment="CENTER" />
    </center>
@@ -30,6 +30,11 @@
                     <MenuItem mnemonicParsing="false" text="About" />
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="Collaborators">
+                    <items>
+                      <MenuItem fx:id="addCollaboratorButton" mnemonicParsing="false" onAction="#OnActionAddCollaborator" text="Add Collaborator" />
+                    </items>
+                  </Menu>
               </menus>
             </MenuBar>
          </children>
